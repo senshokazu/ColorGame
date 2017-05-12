@@ -84,12 +84,12 @@ public class Controller : MonoBehaviour
 
     }
 
-    bool Attack = true;
+    bool CanAttack = true;
     void PlayerAttack()
     {
-        if (Attack == true)
+        if (CanAttack == true)
         {
-            Attack = false;
+            CanAttack = false;
             animator.SetBool("Attack", true);
             Invoke("ColliderStart", 0.3f);
             Invoke("ColliderEnd", 0.5f);
@@ -108,7 +108,7 @@ public class Controller : MonoBehaviour
     }
     void Cooltime()
     {
-        Attack = true;
+        CanAttack = true;
     }
 
 
