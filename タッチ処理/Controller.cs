@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour
     SphereCollider sphereCollider;　//プレイヤーのコライダー
     new public Camera camera;　　　 //newは名前の隠蔽
     public Animator animator;
-    public float speed ;            //プレイヤーの移動速度
+    public float speed;            //プレイヤーの移動速度
     float playerx, playerz;
 
     // Use this for initialization
@@ -45,37 +45,9 @@ public class Controller : MonoBehaviour
                     float z = (playerz) - (hit.point.z);
                     player.transform.eulerAngles = new Vector3(0, Mathf.Atan2(x, z) * Mathf.Rad2Deg - 180, 0);//キャラクターの向き変更
 
-                    if (hit.collider.gameObject.tag == "Cube")
-                    {
-                        animator.SetBool("Move", true);
-                        player.transform.position += ((new Vector3(hit.point.x, 0.25f, hit.point.z) -
-                           new Vector3(playerx, 0.25f, playerz))).normalized * Time.deltaTime * speed;
-                    }
-
                     if (hit.collider.gameObject.tag == "Blue")
                         PlayerAttack();
 
-
-                }
-            }
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.gameObject.tag == "Cube")
-                    {
-                        animator.SetBool("Move", true);
-
-                        float x = (playerx) - (hit.point.x);
-                        float z = (playerz) - (hit.point.z);
-
-                        player.transform.eulerAngles = new Vector3(0, Mathf.Atan2(x, z) * Mathf.Rad2Deg - 180, 0);//キャラクターの向き変更
-                        player.transform.position += ((new Vector3(hit.point.x, 0.25f, hit.point.z) -
-                        new Vector3(playerx, 0.25f, playerz))).normalized * Time.deltaTime * speed;
-
-                    }
                 }
             }
 

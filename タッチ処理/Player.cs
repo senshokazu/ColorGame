@@ -31,20 +31,21 @@ public class Player : MonoBehaviour
         //プレイヤーの角度
         float x1 = x - x0;
         float z1 = z - z0;
-
         if (x1 == 0 || z1 == 0)
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        else 
+        else
+        {
             transform.eulerAngles = new Vector3(0, Mathf.Atan2(x1, z1) * Mathf.Rad2Deg, 0);
-
-        //移動の瞬間   
-        Move(direction);
+            Move(direction);
+        }
+       
     }
 
     void Move(Vector3 direction)
     {
-        
+
         //プレイヤーの座標を取得
+
         Vector3 pos = transform.position;
 
         //移動量を加える
@@ -52,10 +53,15 @@ public class Player : MonoBehaviour
 
         transform.position = pos;
 
-
     }
 
-
-
+    private void OnCollisionEnter(Collision other)
+    {
+        
+    }
 }
+
+
+
+
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageCube : MonoBehaviour {
 	public GameObject cube;
-    float a = 0;
+    float a = 0.5f;
     
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class StageCube : MonoBehaviour {
     //コルーチンを使う理由は、for文をそのまま使うとUnityがフリーズするから
 
 	IEnumerator stage(){
-		for (int i = 49; i >= 0; i--) {
+		for (int i = 48; i >= 0; i--) {
          
 			Instantiate (cube, new Vector3 (transform.position.x+a, transform.position.y, transform.position.z), new Quaternion (0, 0, 0, 0));
 		    a +=0.5f;

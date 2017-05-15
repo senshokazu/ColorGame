@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     public PlayerStatus playerstatus;
 
     public float speed;　　　//スライムの移動速度
-    public int attack;       //スライムの攻撃力
+    public int attack,color_count;//スライムの攻撃力
+    public int init_color_count;
     public Animator animator;
 
     bool EnemyMove = true;
@@ -22,12 +23,19 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        
+        init_color_count = color_count;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (color_count > init_color_count)
+        {
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            init_color_count += 1;
+        }
+
         float enemy_position_x=transform.position.x;
         float enemy_position_z = transform.position.z;
         float x = (enemy_position_x) - (player.transform.position.x);
